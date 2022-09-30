@@ -1,0 +1,58 @@
+<html>
+
+  <head>
+    <title>Texture Archive Editor</title>
+    <link href="main.css" rel="stylesheet" />
+    <script type="module">
+      import { Application } from 'main.js';
+      document.body.patch(<Application />);
+
+      document.$('menu(help) > (about)').on('click', () => {
+        Window.this.modal({ url: 'about/about.htm' });
+      });
+
+      import * as debug from '@debug';
+
+      debug.setUnhandledExceptionHandler(function (err) {
+        Window.this.modal(<warning caption="Unhandled Exception">{err.toString()}<br />{err.stack}</warning>);
+        console.error(err.toString() + '\r\n' + err.stack);
+        document.body.componentUpdate({ loading: false });
+      });
+
+      document.on('closerequest', (evt) => {
+        const response = Window.this.modal(<question caption="Exit">Are you sure you want to exit?</question>);
+        if (response === 'no') evt.preventDefault();
+      });
+    </script>
+    <menu .window>
+      <li>
+        File
+        <menu (file)>
+      <li (new)>New</li>
+      <li (open)>Open&hellip;</li>
+      <li (save)>Save as&hellip;</li>
+      <hr />
+      <li (extract)>Extract all&hellip;</li>
+    </menu>
+    </li>
+    <li>
+      Edit
+      <menu (edit)>
+    <li (add)>Add&hellip;</li>
+    <li (extract)>Extract to&hellip;</li>
+    <hr />
+    <li (delete)>Delete</li>
+    </menu>
+    </li>
+    <li>
+      Help
+      <menu (help)>
+    <li (about)>About&hellip;</li>
+    </menu>
+    </li>
+    </menu>
+  </head>
+
+  <body></body>
+
+</html>

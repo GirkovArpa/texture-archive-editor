@@ -1,0 +1,39 @@
+@set toolbar {
+  :root {
+    background: var(base95-color);
+    color: var(base95-text-color);
+  }
+  :root > button {
+    size: 24dip;
+    foreground-repeat: no-repeat;
+    foreground-position: 50% 50%;
+    foreground-size: 16dip;
+  }
+
+  button:disabled {
+    filter: saturate(0%);
+  }
+
+  button(delete) {
+    foreground-image: url(path:M0 10h24v4h-24z);
+    fill: red;
+    stroke: red;
+  }
+
+  button(add) {
+    foreground-image: url(path:m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z);
+    fill: green;
+    stroke: green;
+  }
+}
+
+@set vr {
+  :root {
+    height: *;
+    margin: 2dip 0;
+    width: 4dip;
+    padding-left: -4dip;
+    border-left: 1dip solid var(base95-text-color);
+    opacity: 0.3;
+  }
+}

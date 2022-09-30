@@ -1,0 +1,12 @@
+_*
+*.exe
+*.dll
+*.zip
+*.gz
+*.gzip
+*.7z
+*.img
+*.bin
+*.pdn
+
+/packaged
