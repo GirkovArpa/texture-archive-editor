@@ -29,7 +29,13 @@ export class Application extends Element {
 
   componentDidMount() {
     document.on('click', 'menu(file) > li(open)', async () => {
+
       if (this.checkIfLoading()) return;
+
+      this.componentUpdate({ loading: true });
+      this.patch(this.render());
+      Window.this.update();
+
       const filename = Window.this
         .selectFile({
           mode: 'open',
@@ -39,7 +45,12 @@ export class Application extends Element {
         ?.replace('file://', '')
         ?.replace(/.+/, (filename) => decodeURIComponent(filename));
 
-      if (!filename) return;
+      if (!filename) {
+        this.componentUpdate({ loading: false });
+        this.patch(this.render());
+        Window.this.update();
+        return;
+      }
 
       await this.loadBinFile(filename);
     });

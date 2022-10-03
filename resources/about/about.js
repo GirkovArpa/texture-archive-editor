@@ -28,7 +28,7 @@ export class About extends Element {
             <icon id="logo" icon-size="xx-large" filename={exepath()} />
             <div id="title">
               <div>Texture Archive Editor</div>
-              <div>v0.2.0</div>
+              <div>v0.2.1</div>
             </div>
           </div>
           <div id="contents">
